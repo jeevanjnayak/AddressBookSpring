@@ -50,4 +50,9 @@ public class AddressBookServices implements IAddressBookServices {
         }
         return null;
     }
+
+    @Override
+    public List<Person> getPersonByCity(String city) {
+        return iPersonRepository.findByCity(city);
+    }
 }

@@ -4,13 +4,10 @@ import com.person.addressbook.dto.PersonDTO;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @ToString
@@ -33,7 +30,10 @@ public class Person {
 
     private String address;
 
-    private String city;
+    @ElementCollection
+    @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "citys")
+    private List<String> city;
     private LocalDate dob;
     private String notes;
 

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/person")
@@ -51,5 +52,11 @@ public class AddressBookController {
     public ResponseEntity<ResponseDTO> editEmployee(@Valid @RequestBody PersonDTO employeeDto, @PathVariable int id) {
         ResponseDTO responseDTO = new ResponseDTO("Employee with id " + id + " Updated Successfully", iAddressBookServices.editEmployee(employeeDto, id));
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/city/{city}")
+    public ResponseEntity<ResponseDTO> getPersonByCity(@PathVariable String city){
+        List<Person> personList = iAddressBookServices.getPersonByCity(city);
+        ResponseDTO responseDTO = new ResponseDTO("employee list gotten successfully",personList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
 }

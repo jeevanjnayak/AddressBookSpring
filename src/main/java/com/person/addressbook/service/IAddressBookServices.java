@@ -17,4 +17,6 @@ public interface IAddressBookServices {
     String deleteById(int id);
 
     String editEmployee(PersonDTO employeeDto, int id);
+
+    List<Person> getPersonByCity(String city);
 }

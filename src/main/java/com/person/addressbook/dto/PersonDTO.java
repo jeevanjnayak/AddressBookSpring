@@ -3,6 +3,11 @@ package com.person.addressbook.dto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.JoinColumn;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -29,8 +34,10 @@ public class PersonDTO {
     @NotEmpty(message = "Please enter the address")
     private String address;
 
-    @NotEmpty(message = "Please enter the city")
-    private String city;
+    @ElementCollection
+    @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "city")
+    private List<String> city;
 
     private LocalDate dob;
     private String notes;
