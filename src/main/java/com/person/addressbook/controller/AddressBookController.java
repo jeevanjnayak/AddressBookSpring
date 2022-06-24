@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 @RestController
 @RequestMapping("/person")
 public class AddressBookController {
@@ -19,7 +20,7 @@ public class AddressBookController {
     IAddressBookServices iAddressBookServices;
 
     //adding an employee and saving to DB using post mapping and taking the input by RequestBody
-    @PostMapping("/adding")
+    @PostMapping("/add")
     public ResponseEntity<ResponseDTO> createEmployee(@Valid @RequestBody PersonDTO personDTO) {
         Person person = iAddressBookServices.addPerson(personDTO);
         ResponseDTO responseDTO = new ResponseDTO("Employee added Successfully", person);

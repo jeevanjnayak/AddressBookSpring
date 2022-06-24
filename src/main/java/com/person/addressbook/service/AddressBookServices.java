@@ -41,9 +41,9 @@ public class AddressBookServices implements IAddressBookServices {
     }
 
     @Override
-    public String editEmployee(PersonDTO employeeDto, int id) {
+    public String editEmployee(PersonDTO personDTO, int id) {
         if (iPersonRepository.findById(id).isPresent()) {
-            Person person = new Person(employeeDto , id);
+            Person person = new Person(personDTO , id);
             person.setId(id);
             Person string = iPersonRepository.save(person);
             return string.toString();
@@ -53,6 +53,7 @@ public class AddressBookServices implements IAddressBookServices {
 
     @Override
     public List<Person> getPersonByCity(String city) {
+
         return iPersonRepository.findByCity(city);
     }
 }

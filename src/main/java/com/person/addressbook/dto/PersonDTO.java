@@ -22,9 +22,6 @@ public class PersonDTO {
     @NotEmpty(message = "Profile pic can't be empty")
     private String profilePic;
 
-    @NotEmpty(message = "Its a required field! can't be empty")
-    private String gender;
-
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "txycy")
     private String mobileNumber;
 
@@ -34,11 +31,10 @@ public class PersonDTO {
     @NotEmpty(message = "Please enter the address")
     private String address;
 
-    @ElementCollection
-    @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "city")
-    private List<String> city;
-
-    private LocalDate dob;
-    private String notes;
+    // @ElementCollection
+    // @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
+    // @Column(name = "city")
+    // private List<String> city;
+    private String city;
+    private String dob;
 }

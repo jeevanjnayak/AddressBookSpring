@@ -24,41 +24,38 @@ public class Person {
 
     private String profilePic;
 
-    private String gender;
     private String mobileNumber;
     private String email;
 
     private String address;
 
-    @ElementCollection
-    @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "citys")
-    private List<String> city;
-    private LocalDate dob;
-    private String notes;
+    // @ElementCollection
+    // @CollectionTable(name = "city", joinColumns = @JoinColumn(name = "id"))
+    // @Column(name = "citys")
+    // private List<String> city;
+    private String city;
+
+    private String dob;
 
     public Person(PersonDTO personDTO) {
         this.name = personDTO.getName();
         this.profilePic = personDTO.getProfilePic();
-        this.gender = personDTO.getGender();
         this.mobileNumber = personDTO.getMobileNumber();
         this.email = personDTO.getEmail();
         this.address = personDTO.getAddress();
         this.city = personDTO.getCity();
         this.dob = personDTO.getDob();
-        this.notes = personDTO.getNotes();
+
     }
 
     public Person(PersonDTO personDTO, int id) {
         this.name = personDTO.getName();
         this.profilePic = personDTO.getProfilePic();
-        this.gender = personDTO.getGender();
         this.mobileNumber = personDTO.getMobileNumber();
         this.email = personDTO.getEmail();
         this.address = personDTO.getAddress();
         this.city = personDTO.getCity();
         this.dob = personDTO.getDob();
-        this.notes = personDTO.getNotes();
         this.id = id;
     }
 }
